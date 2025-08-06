@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magical Butterfly Love Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+      animation: backgroundPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundPulse {
+      0% {
+        background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+      }
+      100% {
+        background: radial-gradient(ellipse at center, #2d1b69 0%, #11998e 50%, #0f0f23 100%);
+      }
+    }
+
+    .star, .shooting-star, .particle {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .star {
+      background: white;
+      animation: advancedTwinkle 3s infinite ease-in-out;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes advancedTwinkle {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg);
+      }
+    }
+
+    .shooting-star {
+      height: 2px;
+      background: linear-gradient(45deg, transparent, #fff, transparent);
+      animation: shoot 3s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px) translateY(100px);
+      }
+      10%, 90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(300px) translateY(-100px);
+      }
+    }
+
+    .particle {
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.6);
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-20px);
+        opacity: 1;
+      }
+    }
+
+    .music-control {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 140, 140, 0.3));
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      backdrop-filter: blur(15px);
+      transition: 0.4s;
+      box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+    }
+
+    .music-control:hover {
+      background: linear-gradient(45deg, rgba(255, 107, 107, 0.5), rgba(255, 140, 140, 0.5));
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 107, 107, 0.5);
+    }
+
+    .dedication {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-style: italic;
+      background: linear-gradient(45deg, #ff6b6b, #feca57, #48cae4, #ff6b6b);
+      background-size: 300% 300%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      animation: dedicationGlow 4s ease-in-out infinite alternate, gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes dedicationGlow {
+      0% {
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        transform: translateX(-50%) scale(1);
+      }
+      100% {
+        text-shadow: 0 0 30px rgba(255, 107, 107, 1);
+        transform: translateX(-50%) scale(1.05);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animation-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+    }
+
+    .heart-rotating {
+      animation: rotateHeart 10s linear infinite, heartPulse 2s ease-in-out infinite alternate;
+      transform-origin: center center;
+    }
+
+    @keyframes rotateHeart {
+      0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      25% { transform: translate(-50%, -50%) rotate(90deg) scale(1.1); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1); }
+      75% { transform: translate(-50%, -50%) rotate(270deg) scale(1.1); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+    }
+
+    @keyframes heartPulse {
+      0% { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
+      100% { filter: drop-shadow(0 0 25px rgba(255, 107, 107, 1)); }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      transition: all 3s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+    }
+
+    .butterfly::before {
+      content: '🦋';
+      font-size: 12px;
+      display: block;
+      animation: advancedFlutter 0.8s infinite ease-in-out alternate;
+    }
+
+    @keyframes advancedFlutter {
+      0% {
+        transform: rotate(-15deg) scale(0.8);
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        transform: rotate(15deg) scale(1.2);
+        filter: hue-rotate(60deg);
+      }
+    }
+
+    .love-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 70px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff, #ff6b6b);
+      background-size: 300% 300%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: textGradient 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 40px rgba(255, 107, 107, 0.8);
+    }
+
+    @keyframes textGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        text-shadow: 0 0 50px rgba(255, 107, 107, 1);
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+    }
+
+    .show-text {
+      opacity: 1 !important;
+      animation: textGradient 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate, textEntrance 1s ease-out forwards;
+    }
+
+    @keyframes textEntrance {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotateY(90deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+      }
+    }
+
+    @keyframes magicalFly {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    .flying {
+      animation: magicalFly 6s infinite cubic-bezier(0.4, 0, 0.6, 1) !important;
+    }
+
+    .heart-trail {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255, 107, 107, 0.7);
+      animation: heartTrail 3s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes heartTrail {
+      0% {
+        opacity: 1;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2) translateY(-50px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="backgroundMusic" loop>
+    <source src="5080054065-290845381.mp3" type="audio/wav">
+  </audio>
+
+  <button class="music-control" onclick="toggleMusic()">🎵 Play Music</button>
+  <div class="dedication">To Chawrash Gyan</div>
+  <div class="animation-container">
+    <div class="love-text" id="loveText">I Love You ❤️</div>
+  </div>
+
+  <script>
+    let musicPlaying = false;
+    let animationPhase = 0;
+    let butterflies = [];
+
+    function createStars() {
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = star.style.height = Math.random() * 4 + 1 + 'px';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(star);
+      }
+
+      for (let i = 0; i < 5; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+        shootingStar.style.left = Math.random() * 100 + '%';
+        shootingStar.style.top = Math.random() * 50 + '%';
+        shootingStar.style.width = Math.random() * 100 + 50 + 'px';
+        shootingStar.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(shootingStar);
+      }
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        document.body.appendChild(particle);
+      }
+    }
+
+    function getHeartPosition(t, scale = 1) {
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+      return { x: x * scale, y: y * scale };
+    }
+
+    function createButterflies() {
+      const container = document.querySelector('.animation-container');
+      butterflies.forEach(b => b.remove());
+      butterflies = [];
+
+      for (let i = 0; i < 60; i++) {
+        const butterfly = document.createElement('div');
+        butterfly.className = 'butterfly';
+        container.appendChild(butterfly);
+        butterflies.push(butterfly);
+      }
+    }
+
+    function formHeart() {
+      const container = document.querySelector('.animation-container');
+      container.classList.add('heart-rotating');
+      butterflies.forEach((butterfly, i) => {
+        const t = (i / butterflies.length) * 2 * Math.PI;
+        const pos = getHeartPosition(t, 10);
+        butterfly.style.left = (250 + pos.x) + 'px';
+        butterfly.style.top = (250 - pos.y) + 'px';
+        butterfly.classList.remove('flying');
+        butterfly.style.opacity = '1';
+      });
+    }
+
+    function showText() {
+      const loveText = document.getElementById('loveText');
+      document.querySelector('.animation-container').classList.remove('heart-rotating');
+      loveText.classList.add('show-text');
+      butterflies.forEach((b, i) => {
+        setTimeout(() => { b.style.opacity = '0'; }, i * 50);
+      });
+    }
+
+    function flyButterflies() {
+      const loveText = document.getElementById('loveText');
+      loveText.classList.remove('show-text');
+      butterflies.forEach((b, i) => {
+        b.style.opacity = '1';
+        b.classList.add('flying');
+        b.style.left = Math.random() * 500 + 'px';
+        b.style.top = Math.random() * 500 + 'px';
+        b.style.animationDelay = (i * 0.05) + 's';
+      });
+    }
+
+    function startAnimation() {
+      setInterval(() => {
+        if (animationPhase === 0) {
+          formHeart();
+          animationPhase = 1;
+        } else if (animationPhase === 1) {
+          setTimeout(() => {
+            showText();
+            animationPhase = 2;
+          }, 4000);
+        } else {
+          setTimeout(() => {
+            flyButterflies();
+            animationPhase = 0;
+          }, 4000);
+        }
+      }, 8000);
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById('backgroundMusic');
+      const button = document.querySelector('.music-control');
+      if (musicPlaying) {
+        music.pause();
+        button.innerHTML = '🎵 Play Music';
+        musicPlaying = false;
+      } else {
+        music.play().catch(() => console.log('Audio file not available'));
+        button.innerHTML = '🔇 Pause Music';
+        musicPlaying = true;
+      }
+    }
+
+    function init() {
+      createStars();
+      createButterflies();
+      formHeart();
+      setTimeout(startAnimation, 1000);
+    }
+
+    window.addEventListener('load', init);
+
+    document.addEventListener('click', function(e) {
+      if (!musicPlaying) {
+        document.getElementById('backgroundMusic').play().catch(() => {});
+      }
+      const heart = document.createElement('div');
+      heart.className = 'heart-trail';
+      heart.innerHTML = '❤️';
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      heart.style.position = 'fixed';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 3000);
+    });
+  </script>
+</body>
+</html>
